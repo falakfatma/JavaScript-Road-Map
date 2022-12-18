@@ -1,30 +1,58 @@
-//**Spread**
-//[Array]
-let arr = ["string", 43, false, ["nextStr", 34, true], { name: "chikki", class: 3, "WannaStudy": false }]
-console.log(arr)
-let collectNewInArr = ["mango", ...arr]//Use to Duplicate => Array,Object
-console.log(collectNewInArr)
-//{Object}
-let obj = {
-  id: 1,
-  name: 'Ben',
-  about: { 'name': 'Leslie' }
-}
-console.log(obj)
-let collect = {
-  'programmer': false
-}
-let allObj = { ...obj, ...collect }
-console.log(allObj)
+// 1st and 2nd method answer 
+//Start
+class complex {
+  constructor(real, imaginary) {
+    this.real = real
+    this.imaginary = imaginary
+  }
+  add(num) {
+    this.real = num.real + this.real
+    this.imaginary = num.imaginary + this.imaginary
+  }
 
-//**Destructuring**
-let fruits = ["mango", "banana", "apple", true, 32]
-// let [mango,apple,banana]= fruits
-let [mango, , apple, banana] = fruits//apple = apple
-//**Hoisting**
-birthday()
-function birthday() {
-  console.log(b)
-  var b = `happy birthday`//undefiend
-  // let b = `happy birthday`//error
+  get real() {
+    return this._real
+  }
+  get imaginary() {
+    return this._imaginary
+  }
+  set real(complexReal) {
+    this._real = complexReal
+  }
+  set imaginary(complexImaginary) {
+    this._imaginary = complexImaginary
+  }
 }
+let agetting = new complex(1, 4)
+console.log(agetting.real)
+agetting._imaginary = 5
+agetting.real = 2
+console.log(agetting.real)
+let bgetting = new complex(9, 3)
+agetting.add(bgetting)
+
+console.log(`${agetting.real}+${agetting.imaginary}i`)
+//End
+//Start
+class Human {
+  constructor(names, classes) {
+    this.name = names
+    this.class = classes
+  }
+  infor() {
+    console.log(` Your Name : ${this.name} Your Class : ${this.class}`)
+
+  }
+}
+class student extends Human {
+  infor() {
+    console.log(`Name : ${this.name} Class : ${this.class}`)
+  }
+}
+let o = new Human()
+let d = new student('maya', 4)
+d.infor()
+console.log(d instanceof Human)
+console.log(o instanceof Human )
+//End
+
